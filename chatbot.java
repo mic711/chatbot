@@ -120,7 +120,7 @@ public class Magpie4
 				response = getRandomResponse();
 			}
     }
-
+}
 
     private boolean hasXThenY(String statement, String first, String second)
 	{
@@ -153,8 +153,7 @@ public class Magpie4
 		String restOfStatement = statement.substring(psn + keyword.length()).trim();
 		return "What would it mean to" + restOfStatement + after;	
 	}
-    }
-
+    
    /**
 	 * Take a statement with "The best team is <something>" and transform it into 
 	 * "What makes you think that the best team is <something>?"
@@ -222,7 +221,6 @@ public class Magpie4
      *is not a substring of a longer string. Will first convert the phrase string to lowercase, then convert the goal string to lowercase, 
      *then lastly, find the first index of the goal lowercase string in the phrase lowercase string, after the start position.
      */
-
     private int findKeyword(String statement, String goal, int startPos)
     {
         String phrase = statement.trim();
@@ -271,8 +269,6 @@ public class Magpie4
         return findKeyword (statement, goal, 0);
     }
     
-
-
     /**
      * Pick a default response to use if nothing else fits.
      * @return a non-committal string
@@ -300,8 +296,6 @@ public class Magpie4
 		{
 			response = "You don't say.";
 		}
-
 		return response;
 	}
-
 }
