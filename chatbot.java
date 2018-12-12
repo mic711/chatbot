@@ -192,6 +192,7 @@ public class Magpie4
 	{
 		return transformInner(statement, "I play for, "What basketball team do you play for " "?");
 	}
+				      
     private String transformIPlayStatement(String statement)
     {
         //  Remove the final period, if there is one
@@ -208,10 +209,6 @@ public class Magpie4
         return "What basketball team do you play for  " + restOfStatement + "?";
     }
     
-    
-
-    
-    
     /**
      * Search for one word in phrase.  
      * This method will check that the given goal is not a substring of a longer string
@@ -221,10 +218,11 @@ public class Magpie4
      * @param startPos the character of the string to begin the search at
      * @return the index of the first occurrence of goal in statement or -1 if it's not found
      * In sum, The algorithm first looks at the string response in the parameters. Then it searches for one word in the phrase
-      or response. It also takes an initial position in the beginning. This method will check that the given goal 
-      is not a substring of a longer string. Will first convert the phrase string to lowercase, then convert the goal string to lowercase, 
-      then lastly, find the first index of the goal lowercase string in the phrase lowercase string, after the start position.
+     *or response. It also takes an initial position in the beginning. This method will check that the given goal 
+     *is not a substring of a longer string. Will first convert the phrase string to lowercase, then convert the goal string to lowercase, 
+     *then lastly, find the first index of the goal lowercase string in the phrase lowercase string, after the start position.
      */
+
     private int findKeyword(String statement, String goal, int startPos)
     {
         String phrase = statement.trim();
@@ -279,7 +277,8 @@ public class Magpie4
      * Pick a default response to use if nothing else fits.
      * @return a non-committal string
      */
-    private String getRandomResponse()
+    
+				      private String getRandomResponse()
     {
         final int NUMBER_OF_RESPONSES = 10;
         double r = Math.random();
