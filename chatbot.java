@@ -1,3 +1,15 @@
+/**
+ * A program to carry on conversations with a human user.
+ * This version:
+ *<ul><li>
+ *      Uses advanced search for keywords 
+ *</li><li>
+ *      Will transform statements as well as react to keywords
+ *</li></ul>
+ * @author Mickie Enad
+ * @version December 2018
+ *
+ */
 public class Magpie4
 {
     public static int counter = 0;
