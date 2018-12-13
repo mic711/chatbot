@@ -6,8 +6,8 @@
  *</li><li>
  *      Will transform statements as well as react to keywords
  *</li></ul>
- * @author Laurie White
- * @version April 2012
+ * @author Mickie Enad
+ * @version December 2018
  *
  */
 public class Magpie4
