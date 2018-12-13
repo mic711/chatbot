@@ -1,15 +1,3 @@
-/**
- * A program to carry on conversations with a human user.
- * This version:
- *<ul><li>
- *      Uses advanced search for keywords 
- *</li><li>
- *      Will transform statements as well as react to keywords
- *</li></ul>
- * @author Mickie Enad
- * @version December 2018
- *
- */
 public class Magpie4
 {
     public static int counter = 0;
@@ -90,56 +78,58 @@ public class Magpie4
         {
             response = "Tell me more about your favorite basketball shoe.";
         }
-	    else if(findKeyword(statement, "My favorite nickname for a player is")>= 0)
-	{
+        else if(findKeyword(statement, "My favorite nickname for a player is")>= 0)
+    {
             response = "That nickname for that player is creative and cool.";
         }
 
         // Responses which require transformations
         else if (findKeyword(statement, "I want to", 0) >= 0)
         {
-            response = transformIWantToStatement(statement);
+           response = transformIWantToStatement(statement);
         }
-        
-        // Responses which require transformations
-        else if (findKeyword(statement, "I want to", 0) >= 0)
+        else if (findKeyword(statement, "The best team is", 0) >= 0)
         {
-            response = transformIWantToStatement(statement);
+            response = transformTheBestTeamIsStatement(statement);
         }
-
+        else if (findKeyword(statement, "I play for", 0) >= 0)
+        {
+            response = transformIPlayForStatement(statement);
+        }
+        else if (findKeyword(statement, "I think the winning team is", 0) >= 0)
+        {
+            response = transformIThinkTheWinningTeamIsStatement(String statement);
+        }
+        else if (findKeyword(statement, "How many times should i practice", 0) >=0)
+        {
+            response = transformHowManyTimesShouldIPracticeStatement(String statement)
+        }
         else
      {
-       if (hasXThenY(statement, "you", "me")) {
-				response = transformYouMeStatement(statement);
-			}
-			else if (hasXThenY(statement, "I", "you")) {
-				response = transformIYouStatement(statement);
-			}
-			else
-			{
-				response = getRandomResponse();
-			}
+        if (hasXThenY(statement, "you", "me")) {
+                response = transformYouMeStatement(statement);
+            }
+            else if (hasXThenY(statement, "I", "you")) {
+                response = getRandomResponse();
+            }
     }
+    return response;
 }
 
     private boolean hasXThenY(String statement, String first, String second)
-	{
-		// Look for a two word pattern
-		int psn = findKeyword(statement, first, 0);
-		return psn >= 0 && findKeyword(statement, second, psn) >= 0;
-	}
+    {
+        // Look for a two word pattern
+        int psn = findKeyword(statement, first, 0);
+        return psn >= 0 && findKeyword(statement, second, psn) >= 0;
+    }
     /**
      * Take a statement with "I want to <something>." and transform it into 
      * "What would it mean to <something>?"
      * @param statement the user statement, assumed to contain "I want to"
      * @return the transformed statement
      */
-	private String transformIWantToStatement(String statement)
-	{
-		return transformSingle(statement, "I want to ", "What would it mean to ", "?");
-	}
-    private String transformSingle(String statement, String keyword, String before, String after)
-	{
+
+    private String transformYouMeStatement(String statement)	{
 		//  Remove the final period, if there is one
 		statement = statement.trim();
 		String lastChar = statement.substring(statement
@@ -149,23 +139,35 @@ public class Magpie4
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		int psn = findKeyword (statement, keyword, 0);
-		String restOfStatement = statement.substring(psn + keyword.length()).trim();
-		return "What would it mean to" + restOfStatement + after;	
+		int psn = findKeyword (statement,"I", 0);
+		String restOfStatement = statement.substring(psn + 9).trim();
+		return "You " + restOfStatement + "?";	
 	}
+    private String transformIWantToStatement(String statement)  {
+        //  Remove the final period, if there is one
+        statement = statement.trim();
+        String lastChar = statement.substring(statement
+                .length() - 1);
+        if (lastChar.equals("."))
+        {
+            statement = statement.substring(0, statement
+                    .length() - 1);
+        }
+        int psn = findKeyword (statement,"I want to", 0);
+        String restOfStatement = statement.substring(psn + 9).trim();
+        return "What would it mean to " + restOfStatement + "?";    
+    }
+    
+    
     
    /**
-	 * Take a statement with "The best team is <something>" and transform it into 
-	 * "What makes you think that the best team is <something>?"
-	 * @param statement the user statement, assumed to contain "you" followed by "me"
-	 * @return the transformed statement
-	 */
-	private String transformYouMeStatement(String statement)
-	{
-		return transformInner(statement, "The best team is", "What makes you think that the best team is " "?");
-	}
+     * Take a statement with "The best team is <something>" and transform it into 
+     * "What makes you think that the best team is <something>?"
+     * @param statement the user statement, assumed to contain "you" followed by "me"
+     * @return the transformed statement
+     */
 
-    private String transformIPlayStatement(String statement)
+    private String transformTheBestTeamIsStatement(String statement)
     {
         //  Remove the final period, if there is one
         statement = statement.trim();
@@ -176,9 +178,9 @@ public class Magpie4
             statement = statement.substring(0, statement
                     .length() - 1);
         }
-        int psn = findKeyword (statement, "I want to", 0);
+        int psn = findKeyword (statement, "The best team is", 0);
         String restOfStatement = statement.substring(psn + 9).trim();
-        return "What makes you think that the best team is " + restOfStatement + "?";
+        return "What makes you think that the best team is  " + restOfStatement + "?";
     }
     
 /**
@@ -187,12 +189,8 @@ public class Magpie4
      * @param statement the user statement, assumed to contain "I want to"
      * @return the transformed statement
      */
-	private String transformYouMeStatement(String statement)
-	{
-		return transformInner(statement, "I play for, "What basketball team do you play for " "?");
-	}
-				      
-    private String transformIPlayStatement(String statement)
+                      
+    private String transformIPlayForStatement(String statement)
     {
         //  Remove the final period, if there is one
         statement = statement.trim();
@@ -203,11 +201,78 @@ public class Magpie4
             statement = statement.substring(0, statement
                     .length() - 1);
         }
-        int psn = findKeyword (statement, "I want to", 0);
+        int psn = findKeyword (statement, "I play", 0);
         String restOfStatement = statement.substring(psn + 9).trim();
-        return "What basketball team do you play for  " + restOfStatement + "?";
+        return "You should play for the  " + restOfStatement;
     }
     
+/**
+     * Take a statement with "I think the winning team is <something>." and transform it into 
+     * "What basketball team do you play for <something>?"
+     * @param statement the user statement, assumed to contain "I want to"
+     * @return the transformed statement
+     */
+                      
+    private String transformIThinkTheWinningTeamIsStatement(String statement)
+    {
+        //  Remove the final period, if there is one
+        statement = statement.trim();
+        String lastChar = statement.substring(statement
+                .length() - 1);
+        if (lastChar.equals("."))
+        {
+            statement = statement.substring(0, statement
+                    .length() - 1);
+        }
+        int psn = findKeyword (statement, "I think the winning team is", 0);
+        String restOfStatement = statement.substring(psn + 9).trim();
+        return "The winning team is  " + restOfStatement;
+    }
+     
+    private String transformHowManyTimesShouldIPracticeStatement(String statement)  
+    {
+        //  Remove the final period, if there is one
+        statement = statement.trim();
+        String lastChar = statement.substring(statement
+                .length() - 1);
+        if (lastChar.equals("."))
+        {
+            statement = statement.substring(0, statement
+                    .length() - 1);
+        }
+        int psn = findKeyword (statement,"How many times should I practice?", 0);
+        String restOfStatement = statement.substring(psn + 9).trim();
+        return "You should practice every day ";    
+    }
+         private String transformWillIGetBetterStatement(String statement)  
+         {
+        //  Remove the final period, if there is one
+        statement = statement.trim();
+        String lastChar = statement.substring(statement
+                .length() - 1);
+        if (lastChar.equals("."))
+        {
+            statement = statement.substring(0, statement
+                    .length() - 1);
+        }
+        int psn = findKeyword (statement,"Will I get better?", 0);
+        String restOfStatement = statement.substring(psn + 9).trim();
+        return "Possibly... But we will never be as superior as me.";    
+    }
+         private String transformIRunAStatement(String statement)  {
+        //  Remove the final period, if there is one
+        statement = statement.trim();
+        String lastChar = statement.substring(statement
+                .length() - 1);
+        if (lastChar.equals("."))
+        {
+            statement = statement.substring(0, statement
+                    .length() - 1);
+        }
+        int psn = findKeyword (statement,"I run a mile time of", 0);
+        String restOfStatement = statement.substring(psn + 9).trim();
+        return "You will possibly make the NBA if you run a mile in" + restOfStatement;    
+    }
     /**
      * Search for one word in phrase.  
      * This method will check that the given goal is not a substring of a longer string
@@ -274,7 +339,7 @@ public class Magpie4
      * @return a non-committal string
      */
     
-				      private String getRandomResponse()
+                      private String getRandomResponse()
     {
         final int NUMBER_OF_RESPONSES = 10;
         double r = Math.random();
@@ -291,11 +356,11 @@ public class Magpie4
         }
         else if (whichResponse == 2)
         {
-		}
-		else if (whichResponse == 3)
-		{
-			response = "You don't say.";
-		}
-		return response;
-	}
+        }
+        else if (whichResponse == 3)
+        {
+            response = "You don't say.";
+        }
+        return response;
+    }
 }
