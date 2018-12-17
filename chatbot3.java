@@ -44,78 +44,78 @@ public class Magpie4
             response = "Why so negative?";
         }
         else if (findKeyword(statement, "Florida") >= 0
-                || findKeyword(statement, "Warriors") >= 0
-                || findKeyword(statement, "Raptors") >= 0
-                || findKeyword(statement, "Rockets") >= 0
-                || findKeyword(statement, "Lakers") >= 0
-                || findKeyword(statement, "Spurs") >= 0
-                || findKeyword(statement, "Bucks") >= 0
-                || findKeyword(statement, "Knicks") >= 0
-                || findKeyword(statement, "Nets") >= 0
-                || findKeyword(statement, "Magic") >= 0
-                || findKeyword(statement, "Clippers") >= 0
-                || findKeyword(statement, "Thunder") >= 0)
+                || findKeyword(statement, "Hawaii") >= 0
+                || findKeyword(statement, "California") >= 0
+                || findKeyword(statement, "home") >= 0
+                || findKeyword(statement, "New York") >= 0
+                || findKeyword(statement, "Boston") >= 0
+                || findKeyword(statement, "Portland") >= 0
+                || findKeyword(statement, "Toronto") >= 0
+                || findKeyword(statement, "Texas") >= 0
+                || findKeyword(statement, "Washington") >= 0
+                || findKeyword(statement, "Mexico") >= 0
+                || findKeyword(statement, "Oklahoma") >= 0)
         {
-            response = "Tell me more about your favorite basketball team.";
+            response = "Tell me more about where you wanna go, like what attractions to you want to go to?";
         }
         
         
-                else if (findKeyword(statement, "Stephen Curry") >= 0
-                || findKeyword(statement, "LeBron James") >= 0
-                || findKeyword(statement, "Kevin Durant") >= 0
-                || findKeyword(statement, "Russel Westbrook") >= 0
-                || findKeyword(statement, "Paul George") >= 0
-                || findKeyword(statement, "Damian Lillard") >= 0
-                || findKeyword(statement, "Giannis Antetokounmpo") >= 0
-                || findKeyword(statement, "James Harden") >= 0
-                || findKeyword(statement, "Demar Derozen") >= 0
-                || findKeyword(statement, "Blake Griffin") >= 0
-                || findKeyword(statement, "Klay Thompson") >= 0
-                || findKeyword(statement, "Draymond Green") >= 0)
+                else if (findKeyword(statement, "Disneyland") >= 0
+                || findKeyword(statement, "Disney World") >= 0
+                || findKeyword(statement, "Six flags") >= 0
+                || findKeyword(statement, "Seaworld") >= 0
+                || findKeyword(statement, "Legoland") >= 0
+                || findKeyword(statement, "Great America") >= 0
+                || findKeyword(statement, "Grand Canyon") >= 0
+                || findKeyword(statement, "Mount Everest") >= 0
+                || findKeyword(statement, "Mount Rushmore") >= 0
+                || findKeyword(statement, "Pike Place Market") >= 0
+                || findKeyword(statement, "Venice Beach") >= 0
+                || findKeyword(statement, "Kennedy Space Center") >= 0)
         {
-            response = "Tell me more about your favorite player.";
+            response = "Tell me more about the attraction you wanna go to, like what hotel should I book?";
         }
 
-                else if (findKeyword(statement, "CURRY 5") >= 0
-                || findKeyword(statement, "LEBRON SOLDIER XII") >= 0
-                || findKeyword(statement, "KYRIE 4") >= 0
-                || findKeyword(statement, "PG 2.5") >= 0
-                || findKeyword(statement, "NIKE HYPERDUNK X") >= 0
-                || findKeyword(statement, "DAME 4") >= 0
-                || findKeyword(statement, "HARDEN VOL.2") >= 0
-                || findKeyword(statement, "KlAY ANTA KT3") >= 0
-                || findKeyword(statement, "ADDIAS CRAZYLIGHT BOAST") >= 0
-                || findKeyword(statement, "AIR JORDAN 11") >= 0
-                || findKeyword(statement, "NIKE KD 6") >= 0
-                || findKeyword(statement, "REEBOK SHAQNOSIS") >= 0)
+                else if (findKeyword(statement, "Four Seasons") >= 0
+                || findKeyword(statement, "Twin Farms") >= 0
+                || findKeyword(statement, "Went Worth Mansion") >= 0
+                || findKeyword(statement, "Beverly Hills Hotel") >= 0
+                || findKeyword(statement, "Montaga Bay") >= 0
+                || findKeyword(statement, "Lowell") >= 0
+                || findKeyword(statement, "Bel-air") >= 0
+                || findKeyword(statement, "Hilton") >= 0
+                || findKeyword(statement, "Hyatt") >= 0
+                || findKeyword(statement, "Rosewood Castle") >= 0
+                || findKeyword(statement, "Oaji Valley") >= 0
+                || findKeyword(statement, "St.Regis") >= 0)
         {
-            response = "Tell me more about your favorite basketball shoe.";
+            response = "Tell me more about the hotel and what you wanna do.";
         }
-        else if(findKeyword(statement, "My favorite nickname for a player is")>= 0)
+        else if(findKeyword(statement, "My favorite place to vacation")>= 0)
     {
-            response = "That nickname for that player is creative and cool.";
+            response = "That vacation sounds creative creative and cool.";
         }
 
         // Responses which require transformations
-        else if (findKeyword(statement, "I want to", 0) >= 0)
+        else if (findKeyword(statement, "I want to go to", 0) >= 0)
         {
-           response = transformIWantToStatement(statement);
+           response = transformIWantToGoToStatement(statement);
         }
-        else if (findKeyword(statement, "The best team is", 0) >= 0)
+        else if (findKeyword(statement, "The best attraction is", 0) >= 0)
         {
-            response = transformTheBestTeamIsStatement(statement);
+            response = transformTheBestAttractionIsStatement(statement);
         }
-        else if (findKeyword(statement, "I play for", 0) >= 0)
+        else if (findKeyword(statement, "Book a flight for", 0) >= 0)
         {
-            response = transformIPlayForStatement(statement);
+            response = transformBookFlightStatement(statement);
         }
-        else if (findKeyword(statement, "I think the winning team is", 0) >= 0)
+        else if (findKeyword(statement, "Book hotel for", 0) >= 0)
         {
-            response = transformIThinkTheWinningTeamIsStatement(String statement);
+            response = transformBookHotelStatement(String statement);
         }
-        else if (findKeyword(statement, "How many times should i practice", 0) >=0)
+        else if (findKeyword(statement, "Is this in my budget?", 0) >=0)
         {
-            response = transformHowManyTimesShouldIPracticeStatement(String statement)
+            response = transformBudgetStatement(String statement)
         }
         else
      {
@@ -156,7 +156,7 @@ public class Magpie4
 		String restOfStatement = statement.substring(psn + 9).trim();
 		return "You " + restOfStatement + "?";	
 	}
-    private String transformIWantToStatement(String statement)  {
+    private String transformIWantToGoToStatement(String statement)  {
         //  Remove the final period, if there is one
         statement = statement.trim();
         String lastChar = statement.substring(statement
@@ -166,9 +166,9 @@ public class Magpie4
             statement = statement.substring(0, statement
                     .length() - 1);
         }
-        int psn = findKeyword (statement,"I want to", 0);
+        int psn = findKeyword (statement,"I want to go to", 0);
         String restOfStatement = statement.substring(psn + 9).trim();
-        return "What would it mean to " + restOfStatement + "?";    
+        return "You want to go to " + restOfStatement + "? Sounds fun";    
     }
     
     
@@ -180,7 +180,7 @@ public class Magpie4
      * @return the transformed statement
      */
 
-    private String transformTheBestTeamIsStatement(String statement)
+    private String transformTheBestAttractionIsStatement(String statement)
     {
         //  Remove the final period, if there is one
         statement = statement.trim();
@@ -193,7 +193,7 @@ public class Magpie4
         }
         int psn = findKeyword (statement, "The best team is", 0);
         String restOfStatement = statement.substring(psn + 9).trim();
-        return "What makes you think that the best team is  " + restOfStatement + "?";
+        return "What makes you think that the attraction is  " + restOfStatement + "?";
     }
     
 /**
@@ -203,7 +203,7 @@ public class Magpie4
      * @return the transformed statement
      */
                       
-    private String transformIPlayForStatement(String statement)
+    private String transformBookFlightStatement(String statement)
     {
         //  Remove the final period, if there is one
         statement = statement.trim();
@@ -214,9 +214,9 @@ public class Magpie4
             statement = statement.substring(0, statement
                     .length() - 1);
         }
-        int psn = findKeyword (statement, "I play", 0);
+        int psn = findKeyword (statement, "Book a flight for", 0);
         String restOfStatement = statement.substring(psn + 9).trim();
-        return "You should play for the  " + restOfStatement;
+        return "I have booked a flight for " + restOfStatement;
     }
     
 /**
@@ -226,7 +226,7 @@ public class Magpie4
      * @return the transformed statement
      */
                       
-    private String transformIThinkTheWinningTeamIsStatement(String statement)
+    private String transformBookHotelStatement(String statement)
     {
         //  Remove the final period, if there is one
         statement = statement.trim();
@@ -237,12 +237,12 @@ public class Magpie4
             statement = statement.substring(0, statement
                     .length() - 1);
         }
-        int psn = findKeyword (statement, "I think the winning team is", 0);
+        int psn = findKeyword (statement, "Book hotel for", 0);
         String restOfStatement = statement.substring(psn + 9).trim();
-        return "The winning team is  " + restOfStatement;
+        return "I have booked hotel for " + restOfStatement;
     }
      
-    private String transformHowManyTimesShouldIPracticeStatement(String statement)  
+    private String transformBudgetStatement(String statement)  
     {
         //  Remove the final period, if there is one
         statement = statement.trim();
@@ -253,39 +253,11 @@ public class Magpie4
             statement = statement.substring(0, statement
                     .length() - 1);
         }
-        int psn = findKeyword (statement,"How many times should I practice?", 0);
+        int psn = findKeyword (statement,"Is this in my budget?", 0);
         String restOfStatement = statement.substring(psn + 9).trim();
-        return "You should practice every day ";    
+        return "Depends how much your willing to pay.";    
     }
-         private String transformWillIGetBetterStatement(String statement)  
-         {
-        //  Remove the final period, if there is one
-        statement = statement.trim();
-        String lastChar = statement.substring(statement
-                .length() - 1);
-        if (lastChar.equals("."))
-        {
-            statement = statement.substring(0, statement
-                    .length() - 1);
-        }
-        int psn = findKeyword (statement,"Will I get better?", 0);
-        String restOfStatement = statement.substring(psn + 9).trim();
-        return "Possibly... But we will never be as superior as me.";    
-    }
-         private String transformIRunAStatement(String statement)  {
-        //  Remove the final period, if there is one
-        statement = statement.trim();
-        String lastChar = statement.substring(statement
-                .length() - 1);
-        if (lastChar.equals("."))
-        {
-            statement = statement.substring(0, statement
-                    .length() - 1);
-        }
-        int psn = findKeyword (statement,"I run a mile time of", 0);
-        String restOfStatement = statement.substring(psn + 9).trim();
-        return "You will possibly make the NBA if you run a mile in" + restOfStatement;    
-    }
+         
     /**
      * Search for one word in phrase.  
      * This method will check that the given goal is not a substring of a longer string
